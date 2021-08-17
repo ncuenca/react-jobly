@@ -41,33 +41,31 @@ class JoblyApi {
     return res.company;
   }
 
-  /** Get all companies */
+  /** Get all companies (optional search term of company name)*/
+  static async getCompanies(name) {
+    let res;
 
-  static async getCompanies() {
-    let res = await this.request(`companies`);
-    return res.companies;
-  }
-
-  /** Get companies with name filter */
-
-  static async searchCompanyNames(name) {
-      let res = await this.request('companies', {name});
-      return res.companies;
+    if(name === "") {
+      res = await this.request(`companies`);
+    } else {
+      res = await this.request(`companies`, { name });
+    }
+    return res.companies
   }
 
   /** Get all jobs */
 
-  static async getJobs() {
-      let res = await this.request('jobs');
-      return res.jobs;
+  static async getJobs(title) {
+    let res;
+
+    if(title === "") {
+      res = await this.request(`jobs`);
+    } else {
+      res = await this.request(`jobs`, { title });
+    }
+    return res.jobs
   }
 
-  /** Get companies with name filter */
-
-  static async searchJobTitles(title) {
-    let res = await this.request('jobs', {title});
-    return res.jobs;
-  }
 }
 
 // for now, put token ("testuser" / "password" on class)

@@ -8,5 +8,5 @@ import JobCard from './JobCard';
  * { JobsContainer, CompanyDetails } -> JobList -> JobCard
  */
 export default function JobList({ jobs }) {
-    return jobs.map(job => <JobCard job={job}/>);
+    return jobs.map(job => <JobCard key={job.id} job={job}/>);
 }

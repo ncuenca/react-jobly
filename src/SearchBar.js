@@ -17,13 +17,14 @@ export default function SearchBar({ search }) {
     setTerm(evt.target.value);
   }
 
+  // trim term before passing to search
   function handleSubmit(evt) {
     evt.preventDefault();
-    search(term);
+    search(term.trim());
   }
 
   return (
-    <div className="SearchBar">
+    <div className="SearchBar container mb-4">
       <form onSubmit={handleSubmit}>
         <input
           value={term}

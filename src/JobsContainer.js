@@ -30,7 +30,7 @@ export default function JobsContainer() {
 
     async function search(term) {
         setIsLoading(true);
-        const jobs = await JoblyApi.searchJobTitles(term);
+        const jobs = await JoblyApi.getJobs(term);
         setJobs(jobs);
         setIsLoading(false);
     }

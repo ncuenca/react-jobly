@@ -5,17 +5,30 @@ Jobly(App)
 
     Homepage
 
-    CompaniesContainer
-      state
+    CompaniesContainer (/companies)
+      state:
         - companies
+        - isLoading
 
-      SearchBar
+      renders:
+        - SearchBar
+        - CompaniesList
+      
+      CompanyList
+        props:
+          - companies
 
-      CompaniesList
+        renders:
+          - CompanyCard
 
         CompanyCard
+          props:
+            - company
 
-    CompanyDetails
+          renders:
+            - info about a company
+
+    CompanyDetails (/companies/:company)
 
       CompanyInfo
       
@@ -23,13 +36,27 @@ Jobly(App)
 
         Job
 
-    JobsContainer
+    JobsContainer (/jobs)
+      state:
+        - jobs
+        - isLoading
 
-      SearchBar
+      renders:
+        - SearchBar
+        - JobList
+        
+      JobList
+        props:
+          - jobs
 
-      JobsList
+        renders:
+          - JobCard
 
-        JobCard 
+      JobCard 
+        props: job
+
+        renders:
+          - info about a job
 
     LoginForm
 

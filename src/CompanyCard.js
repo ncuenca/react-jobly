@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom"
+import "./CompanyCard.css"
+
 /** Renders CompanyCard
  * 
  * Contains information about the company
@@ -10,9 +13,16 @@
 
 export default function CompanyCard({ company }) {
     return (
-        <div className="CompanyCard">
-            <h3>{company.name}</h3>
-            <p>{company.description}</p>
+        <div className="CompanyCard container mb-4">  
+            <Link to={`/companies/${company.handle}`} style={{textDecoration:"none"}}>
+            <div className="card" style={{width: "18rem"}}>
+                <div className="card-body">
+                    <h5 className="card-title">{company.name}</h5>
+                    <small className="card-text">{company.description}</small>
+                </div>
+            </div>
+            </Link>
         </div>
+        
     );
 }

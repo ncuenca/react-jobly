@@ -29,7 +29,7 @@ export default function CompaniesContainer() {
 
     async function search(term) {
         setIsLoading(true);
-        const companies = await JoblyApi.searchCompanyNames(term);
+        const companies = await JoblyApi.getCompanies(term);
         setCompanies(companies);
         setIsLoading(false);
     }

@@ -9,11 +9,15 @@
  */
 export default function JobCard({ job }) {
     return (
-        <div className="JobCard">
-            <h3>{job.title}</h3>
-            <p>{job.companyHandle}</p>
-            <p>Salary: {job.salary}</p>
-            <p>Equity: {job.equity}</p>
+        <div className="JobCard container mb-4">
+            <div class="card" style={{width: "18rem"}}>
+                <div class="card-body">
+                    <h5 class="card-title">{job.title}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{job.companyHandle}</h6>
+                    <p class="card-text">Salary: {job.salary}</p>
+                    <p class="card-text">Equity: {job.equity}</p>
+                </div>
+            </div>
         </div>
     );
 }
