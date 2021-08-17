@@ -8,8 +8,7 @@ import ProfileForm from './ProfileForm';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 
-/**
- * Routes
+/** Routes
  */
 
 export default function Routes() {
