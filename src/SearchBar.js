@@ -7,25 +7,26 @@ import React, { useState } from "react";
  *
  *  Props:
  *    - search (parent callback)
+ * 
+ * { CompaniesContainer, JobsContainer } -> SearchBar
  */
 export default function SearchBar({ search }) {
-  const [formData, setFormData] = useState("");
+  const [term, setTerm] = useState("");
 
   function handleChange(evt) {
-    setFormData(evt.target.value);
+    setTerm(evt.target.value);
   }
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    search(formData);
-    setFormData("");
+    search(term);
   }
 
   return (
     <div className="SearchBar">
       <form onSubmit={handleSubmit}>
         <input
-          value={formData}
+          value={term}
           placeholder="Enter search term"
           onChange={handleChange}
         />

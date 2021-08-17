@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react"
 import JoblyApi from "./api"
 import SearchBar from "./SearchBar";
+import CompanyList from './CompanyList';
 
 /** CompaniesContainer renders CompanyList and SearchBar.
  * 
  *  On first mount, renders list of all current companies.
+ *  Can search through companies by name.
  * 
  *  State:
  *      - isLoading
  *      - companies
+ * 
+ * CompaniesContainer -> { CompanyList, SearchBar }
  */
 export default function CompaniesContainer() {
     const [isLoading, setIsLoading] = useState(true);
@@ -16,27 +20,30 @@ export default function CompaniesContainer() {
 
     useEffect(function getAllCompanies() {
         async function fetchCompanies() {
-            let companies = await JoblyApi.getCompanies();
+            const companies = await JoblyApi.getCompanies();
             setCompanies(companies);
             setIsLoading(false);
         }
         fetchCompanies();
     }, []);
 
+    async function search(term) {
+        setIsLoading(true);
+        const companies = await JoblyApi.searchCompanyNames(term);
+        setCompanies(companies);
+        setIsLoading(false);
+    }
+
     if (isLoading) return <p>Loading...</p>
 
     return (
         <div className="CompaniesContainer">
             <div className="CompaniesContainer-SearchBar">
-                <SearchBar />
+                <SearchBar search={search} />
             </div>
 
-            {companies.map(company => (
-                <div className="CompaniesContainer-company">
-                    <h3>{company.name}</h3>
-                    <p>{company.description}</p>
-                </div>
-            ))}
+            <CompanyList companies={companies}/>
+            
         </div>
     )
 }
