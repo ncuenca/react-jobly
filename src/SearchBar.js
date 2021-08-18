@@ -10,8 +10,8 @@ import React, { useState } from "react";
  * 
  * { CompaniesContainer, JobsContainer } -> SearchBar
  */
-export default function SearchBar({ search }) {
-  const [term, setTerm] = useState("");
+export default function SearchBar({ search, initialTerm }) {
+  const [term, setTerm] = useState(initialTerm);
 
   function handleChange(evt) {
     setTerm(evt.target.value);

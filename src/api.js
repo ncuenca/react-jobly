@@ -41,7 +41,7 @@ class JoblyApi {
     return res.company;
   }
 
-  /** Get all companies (optional search term of company name)*/
+  /** Get all companies (optional search term of company name) */
   static async getCompanies(name) {
     let res;
 
@@ -53,7 +53,7 @@ class JoblyApi {
     return res.companies
   }
 
-  /** Get all jobs */
+  /** Get all jobs (optional search term of job title) */
 
   static async getJobs(title) {
     let res;

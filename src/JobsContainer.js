@@ -19,18 +19,14 @@ import './JobsContainer.css'
 export default function JobsContainer() {
     const [isLoading, setIsLoading] = useState(true);
     const [jobs, setJobs] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
 
-    useEffect(function getAlljobs() {
-        async function fetchJobs() {
-            const jobs = await JoblyApi.getJobs();
-            setJobs(jobs);
-            setIsLoading(false);
-        }
-        fetchJobs();
-    }, []);
+    useEffect(function getJobs() {
+        search(searchTerm);
+    }, [searchTerm]);
 
     async function search(term) {
-        setIsLoading(true);
+        setSearchTerm(term);
         const jobs = await JoblyApi.getJobs(term);
         setJobs(jobs);
         setIsLoading(false);
@@ -40,7 +36,7 @@ export default function JobsContainer() {
 
     return (
         <div className="JobsContainer container">
-            <SearchBar search={search} />
+            <SearchBar search={search} initialTerm={searchTerm} />
             <JobList jobs={jobs}/>         
         </div>
     )

@@ -20,6 +20,7 @@ export default function CompanyCard({ company }) {
                     <h5 className="card-title">{company.name}</h5>
                     <small className="card-text">{company.description}</small>
                 </div>
+                {company.logoUrl && <img src={company.logoUrl} alt={company.name}></img>}
             </div>
             </Link>
         </div>

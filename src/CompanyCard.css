@@ -1,3 +1,10 @@
 .card {
   color: black;
 }
+
+.card img {
+  position: absolute;
+  width: 50px;
+  right: 10px;
+  top: 12px;
+}
