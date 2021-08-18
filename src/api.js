@@ -34,7 +34,26 @@ class JoblyApi {
 
   // Individual API routes
 
-  /** Create a user */
+  /** Registering a new user */
+
+  static async register(user) {
+    let res = await this.request(`auth/register`, user, "post");
+    return res.token;
+  }
+
+  /** Get token after login */
+
+  static async login(username, password) {
+    let res = await this.request(`auth/token`, { username, password }, "post");
+    return res.token;
+  }
+
+  /** Get a user. */
+
+  static async getUser(username) {
+    let res = await this.request(`user/${username}`);
+    return res.user;
+  }
 
   /** Get details on a company by handle. */
 
@@ -44,6 +63,7 @@ class JoblyApi {
   }
 
   /** Get all companies (optional search term of company name) */
+
   static async getCompanies(name) {
     let res;
 
@@ -71,8 +91,8 @@ class JoblyApi {
 }
 
 // for now, put token ("testuser" / "password" on class)
-JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-    "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-    "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+// JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+//     "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
+//     "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
 export default JoblyApi;

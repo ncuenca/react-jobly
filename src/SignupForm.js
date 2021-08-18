@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 
-/** Renders SignupForm to create a new user
+/** Renders a Signup Form to create a new user
+ *  
+ *  After submitting form: TODO:
+ *      - registers and logs user in
+ *      - redirect to all companies
  * 
- * App -> Routes -> SignupForm
+ *  State:
+ *      - formData
+ * 
+ *  App -> Routes -> SignupForm
  */
 export default function SignupForm() {
     const [formData, setFormData] = useState({});
@@ -81,7 +88,7 @@ export default function SignupForm() {
                         aria-label="email"
                     />
                 </div>
-                <button className="btn btn-primary" type="submit">Sign Up!</button>
+                <button className="btn btn-primary mt-4" type="submit">Sign Up!</button>
             </form>
         </div>
     )
