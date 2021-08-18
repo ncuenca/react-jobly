@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { Redirect } from "react-router-dom"
 import JoblyApi from "./api";
 import SearchBar from "./SearchBar";
 import CompanyList from './CompanyList';
 import './CompaniesContainer.css';
+import UserContext from "./userContext";
 
 /** CompaniesContainer renders CompanyList and SearchBar.
  * 
- *  On first mount, renders list of all current companies.
+ *  On first mount, renders a list of all current companies.
  *  Can search through companies by name.
+ * 
+ *  Inaccessible if not logged in.
  * 
  *  State:
  *      - isLoading
@@ -16,6 +20,8 @@ import './CompaniesContainer.css';
  * CompaniesContainer -> { CompanyList, SearchBar }
  */
 export default function CompaniesContainer() {
+    const currentUser = useContext(UserContext);
+
     const [isLoading, setIsLoading] = useState(true);
     const [companies, setCompanies] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
@@ -31,6 +37,10 @@ export default function CompaniesContainer() {
         setIsLoading(false);
     }
 
+    if (!currentUser) {
+        return <Redirect to="/" />
+    } 
+    
     if (isLoading) return <p>Loading...</p>
 
     return (

@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 /** Renders a Login Form to login a user
  * 
- *  After submitting form: TODO:
+ *  After submitting form:
  *      - login user
  *      - redirect to all companies
  * 
@@ -61,7 +61,7 @@ export default function LoginForm({ login }) {
                     />
                 </div>
                 
-                <button className="btn btn-primary mt-4" type="submit">Sign Up!</button>
+                <button className="btn btn-primary mt-4" type="submit">Login</button>
             </form>
         </div>
     )

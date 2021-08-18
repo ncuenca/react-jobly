@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { useHistory, Redirect } from "react-router-dom";
+import UserContext from "./userContext";
 
 /** Renders a Signup Form to create a new user
  *  
- *  After submitting form: TODO:
+ *  After submitting form: 
  *      - registers and logs user in
  *      - redirect to all companies
  * 
@@ -13,6 +14,9 @@ import { useHistory } from "react-router-dom";
  *  App -> Routes -> SignupForm
  */
 export default function SignupForm({ register }) {
+    const currentUser = useContext(UserContext);
+    console.log(currentUser)
+    
     const history = useHistory();
     const [formData, setFormData] = useState({});
 
@@ -29,6 +33,10 @@ export default function SignupForm({ register }) {
         if (await register(formData)) {
             history.push('/companies')
         } 
+    }
+
+    if(currentUser) {
+        return <Redirect to="/" />
     }
 
     return (

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 /** SearchBar Component
  *
  *  State:
- *    - formData
+ *    - term
  *
  *  Props:
  *    - search (parent callback)
@@ -24,7 +24,6 @@ export default function SearchBar({ search, initialTerm }) {
   }
 
   return (
-
     <form onSubmit={handleSubmit} style={{width: "60%"}}>
       <div className="input-group mb-3">
         <input 

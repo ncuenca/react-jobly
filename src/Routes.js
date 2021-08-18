@@ -10,7 +10,7 @@ import LoginForm from "./LoginForm";
 
 /** Routes for Jobly App
  *
- * App -> Routes
+ *  App -> Routes
  */
 
 export default function Routes({ login, register }) {
