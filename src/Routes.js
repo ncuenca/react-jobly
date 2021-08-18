@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Homepage from "./Homepage.js";
 import CompaniesContainer from "./CompaniesContainer";
 import JobsContainer from "./JobsContainer";
@@ -37,6 +37,7 @@ export default function Routes() {
         <Route exact path="/login">
           <LoginForm />
         </Route>
+        <Redirect to="/"/>
       </Switch>
     </div>
   );

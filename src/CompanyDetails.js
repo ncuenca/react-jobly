@@ -21,17 +21,14 @@ export default function CompanyDetails() {
   const [isLoading, setIsLoading] = useState(true);
   const [company, setCompany] = useState(null);
 
-  useEffect(
-    function getCompanyDetail() {
+  useEffect(function getCompanyDetail() {
       async function fetchCompany() {
         const company = await JoblyApi.getCompany(handle);
         setCompany(company);
         setIsLoading(false);
       }
       fetchCompany();
-    },
-    [company, handle]
-  );
+    }, [company, handle]);
 
   if (isLoading) return <p>Loading...</p>;
 

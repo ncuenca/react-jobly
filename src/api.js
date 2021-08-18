@@ -34,6 +34,8 @@ class JoblyApi {
 
   // Individual API routes
 
+  /** Create a user */
+
   /** Get details on a company by handle. */
 
   static async getCompany(handle) {
