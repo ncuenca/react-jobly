@@ -9,7 +9,7 @@
  */
 export default function JobCard({ job }) {
     return (
-        <div className="JobCard container mb-4"style={{width: "40%"}}>
+        <div className="JobCard container mb-4"style={{width: "60%"}}>
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{job.title}</h5>

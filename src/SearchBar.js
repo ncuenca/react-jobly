@@ -25,7 +25,7 @@ export default function SearchBar({ search }) {
 
   return (
 
-    <form onSubmit={handleSubmit} style={{width: "40%"}}>
+    <form onSubmit={handleSubmit} style={{width: "60%"}}>
       <div class="input-group mb-3">
         <input 
           type="text"

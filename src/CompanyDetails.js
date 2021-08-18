@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import JoblyApi from "./api";
 import JobList from "./JobList";
+import "./CompanyDetails.css"
 
 /** CompanyDetails renders details about a Company,
  *  including all jobs at that company.
@@ -36,8 +37,10 @@ export default function CompanyDetails() {
 
   return (
     <div className="CompanyDetails container">
-      <h2>{company.name}</h2>
-      <h3>{company.description}</h3>
+      <div className="CompanyDetails-info mb-4">
+        <h4>{company.name}</h4>
+        <h5>{company.description}</h5>
+      </div>
 
       <JobList jobs={company.jobs} />
     </div>
