@@ -13,9 +13,9 @@ import "./CompanyCard.css"
 
 export default function CompanyCard({ company }) {
     return (
-        <div className="CompanyCard container mb-4">  
+        <div className="CompanyCard container mb-4" style={{width: "40%"}}>  
             <Link to={`/companies/${company.handle}`} style={{textDecoration:"none"}}>
-            <div className="card" style={{width: "18rem"}}>
+            <div className="card">
                 <div className="card-body">
                     <h5 className="card-title">{company.name}</h5>
                     <small className="card-text">{company.description}</small>

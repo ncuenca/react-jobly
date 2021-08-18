@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react"
-import JoblyApi from "./api"
+import React, { useEffect, useState } from "react";
+import JoblyApi from "./api";
 import SearchBar from "./SearchBar";
 import JobList from './JobList';
+import './JobsContainer.css'
 
 /** JobsContainer renders JobList and SearchBar.
  * 
@@ -38,13 +39,9 @@ export default function JobsContainer() {
     if (isLoading) return <p>Loading...</p>
 
     return (
-        <div className="jobsContainer">
-            <div className="jobsContainer-SearchBar">
-                <SearchBar search={search} />
-            </div>
-
-            <JobList jobs={jobs}/>
-            
+        <div className="JobsContainer container">
+            <SearchBar search={search} />
+            <JobList jobs={jobs}/>         
         </div>
     )
 }

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react"
-import JoblyApi from "./api"
+import React, { useEffect, useState } from "react";
+import JoblyApi from "./api";
 import SearchBar from "./SearchBar";
 import CompanyList from './CompanyList';
+import './CompaniesContainer.css';
 
 /** CompaniesContainer renders CompanyList and SearchBar.
  * 
@@ -37,13 +38,9 @@ export default function CompaniesContainer() {
     if (isLoading) return <p>Loading...</p>
 
     return (
-        <div className="CompaniesContainer">
-            <div className="CompaniesContainer-SearchBar">
-                <SearchBar search={search} />
-            </div>
-
+        <div className="CompaniesContainer container">
+            <SearchBar search={search} />
             <CompanyList companies={companies}/>
-            
         </div>
     )
 }
