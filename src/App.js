@@ -17,32 +17,41 @@ function App() {
       JoblyApi.token = token;
       
       let { username } = jwt.decode(token);
-      let user = JoblyApi.getUser(username)
+      let user = JoblyApi.getUser(username);
       setCurrentUser(user);
     }
   }, [token])
 
+  /** Takes object like {username, password} */
   async function login({username, password}) {
     try {
       let token = await JoblyApi.login(username, password);
       setToken(token);
+      return true;
     } catch (err) {
-      alert(err.message)
+      alert(err[0]);
+      return false;
     }
   }
 
+  /** user object like 
+   *       {username, password, first_name, last_name, email} */
   async function register(user) {
     try {
       let token = await JoblyApi.register(user);
       setToken(token);
+      return true;
     } catch (err) {
-      alert(err.message)
+      alert(err[0]);
+      return false;
     }
   }
 
+  console.log(token);
+  console.log(currentUser);
   return (
     <BrowserRouter>
-      <Navbar login={login} register={register} />
+      <Navbar />
       <Routes login={login} register={register} />
     </BrowserRouter>
     

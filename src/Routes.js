@@ -10,9 +10,10 @@ import LoginForm from "./LoginForm";
 
 /** Routes for Jobly App
  *
+ * App -> Routes
  */
 
-export default function Routes() {
+export default function Routes({ login, register }) {
   return (
     <div className="Routes">
       <Switch>
@@ -32,10 +33,10 @@ export default function Routes() {
           <ProfileForm />
         </Route>
         <Route exact path="/signup">
-          <SignupForm />
+          <SignupForm register={register}/>
         </Route>
         <Route exact path="/login">
-          <LoginForm />
+          <LoginForm login={login}/>
         </Route>
         <Redirect to="/"/>
       </Switch>

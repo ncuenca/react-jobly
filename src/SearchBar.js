@@ -26,16 +26,16 @@ export default function SearchBar({ search, initialTerm }) {
   return (
 
     <form onSubmit={handleSubmit} style={{width: "60%"}}>
-      <div class="input-group mb-3">
+      <div className="input-group mb-3">
         <input 
           type="text"
           value={term} 
-          class="form-control" 
+          className="form-control" 
           placeholder="Enter search term" 
           aria-label="Search term" 
           onChange={handleChange}
           aria-describedby="button-addon2"/>
-        <button class="btn btn-primary" type="submit" id="button-addon2">Search</button>
+        <button className="btn btn-primary" type="submit" id="button-addon2">Search</button>
       </div>
     </form>
   );

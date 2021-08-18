@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+
 
 /** Renders a Login Form to login a user
  * 
@@ -11,7 +13,8 @@ import React, { useState } from "react";
  * 
  * App -> Routes -> LoginForm
  */
-export default function LoginForm() {
+export default function LoginForm({ login }) {
+    const history = useHistory();
     const [formData, setFormData] = useState({});
 
     function handleChange(evt) { 
@@ -22,9 +25,12 @@ export default function LoginForm() {
         }));
     }
     
-    function handleSubmit(evt) { 
+    async function handleSubmit(evt) { 
+        
         evt.preventDefault();
-        setFormData({});
+        if (await login(formData)) {
+            history.push('/companies')
+        } 
     }
 
     return (
@@ -35,10 +41,10 @@ export default function LoginForm() {
                     <label htmlFor="login-user">Username: </label>
                     <input
                         id="login-user"
-                        name="user"
+                        name="username"
                         className="form-control"
                         onChange={handleChange}
-                        value={formData.user}
+                        value={formData.username}
                         aria-label="Username"
                     />
                 </div>

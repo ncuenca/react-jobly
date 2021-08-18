@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 /** Renders a Signup Form to create a new user
  *  
@@ -11,7 +12,8 @@ import React, { useState } from "react";
  * 
  *  App -> Routes -> SignupForm
  */
-export default function SignupForm() {
+export default function SignupForm({ register }) {
+    const history = useHistory();
     const [formData, setFormData] = useState({});
 
     function handleChange(evt) { 
@@ -22,9 +24,11 @@ export default function SignupForm() {
         }));
     }
     
-    function handleSubmit(evt) { 
+    async function handleSubmit(evt) { 
         evt.preventDefault();
-        setFormData({});
+        if (await register(formData)) {
+            history.push('/companies')
+        } 
     }
 
     return (
@@ -32,13 +36,13 @@ export default function SignupForm() {
             <h1>Sign up</h1>
             <form onSubmit={handleSubmit} style={{width: "60%"}}>
                 <div className="form-group">
-                    <label htmlFor="newuser-user">Username: </label>
+                    <label htmlFor="username">Username: </label>
                     <input
-                        id="newuser-user"
-                        name="user"
+                        id="username"
+                        name="username"
                         className="form-control"
                         onChange={handleChange}
-                        value={formData.user}
+                        value={formData.username}
                         aria-label="Username"
                     />
                 </div>
@@ -58,7 +62,7 @@ export default function SignupForm() {
                     <label htmlFor="newuser-first-name">First Name: </label>
                     <input
                         id="newuser-first-name"
-                        name="first-name"
+                        name="firstName"
                         className="form-control"
                         onChange={handleChange}
                         value={formData.firstName}
@@ -69,7 +73,7 @@ export default function SignupForm() {
                     <label htmlFor="newuser-last-name">Last Name: </label>
                     <input
                         id="newuser-last-name"
-                        name="last-name"
+                        name="lastName"
                         className="form-control"
                         onChange={handleChange}
                         value={formData.lastName}
