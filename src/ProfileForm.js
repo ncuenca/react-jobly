@@ -7,7 +7,8 @@ import './ProfileForm.css'
  *  Inaccessible if not logged in.
  *  
  *  Props:
- *      - update
+ *      - update(username, formData) function to update user information
+ *            formData object like { firstName, lastName, email, password }
  * 
  *  State:
  *      - formData
@@ -46,10 +47,11 @@ export default function ProfileForm({ update }) {
     evt.preventDefault();
     try {
       await update(currentUser.username, formData);
-      setSuccess(["Updated successfully."]);
     } catch (errs) {
       setErrors(errs);
+      return;
     }
+    setSuccess(["Updated successfully."]);
   }
 
   return (
@@ -76,7 +78,6 @@ export default function ProfileForm({ update }) {
             className="form-control"
             onChange={handleChange}
             value={formData.firstName || ""}
-            aria-label="first-name"
           />
         </div>
         <div className="form-group mb-4">
@@ -89,7 +90,6 @@ export default function ProfileForm({ update }) {
             className="form-control"
             onChange={handleChange}
             value={formData.lastName || ""}
-            aria-label="last-name"
           />
         </div>
         <div className="form-group mb-4">
@@ -103,7 +103,6 @@ export default function ProfileForm({ update }) {
             className="form-control"
             onChange={handleChange}
             value={formData.email || ""}
-            aria-label="email"
           />
         </div>
         <div className="form-group mb-4">
@@ -117,7 +116,6 @@ export default function ProfileForm({ update }) {
             className="form-control"
             onChange={handleChange}
             value={formData.password || ""}
-            aria-label="Password"
           />
         </div>
         {success.length > 0 && (

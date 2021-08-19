@@ -24,6 +24,7 @@ import UserContext from './userContext';
 function App() {
   const [token, setToken] = useState(localStorage.token);
   const [currentUser, setCurrentUser] = useState(null);
+  // TODO: isLoggingIn state
 
   useEffect(function storeUser() {
     async function fetchUser() {

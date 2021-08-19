@@ -17,7 +17,10 @@ import './LoginForm.css'
  *  Context:
  *      - UserContext
  * 
- * App -> Routes -> LoginForm
+ *  History:
+ *      - Redirects to /companies after login
+ * 
+ *  App -> Routes -> LoginForm
  */
 export default function LoginForm({ login }) {
     const currentUser = useContext(UserContext);
@@ -25,6 +28,8 @@ export default function LoginForm({ login }) {
     const history = useHistory();
     const [formData, setFormData] = useState({});
     const [errors, setErrors] = useState([]);
+
+    console.debug(`LoginForm`, formData, currentUser, errors);
 
     function handleChange(evt) { 
         const { name, value } = evt.target;
@@ -44,7 +49,7 @@ export default function LoginForm({ login }) {
         }
     }
 
-    if(currentUser) {
+    if (currentUser) {
         return <Redirect to="/" />
     }
 
