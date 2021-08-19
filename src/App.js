@@ -22,7 +22,6 @@ import UserContext from './userContext';
 function App() {
   const [token, setToken] = useState(localStorage.token);
   const [currentUser, setCurrentUser] = useState(null);
-  //TODO: state about loading for logging in/registering
 
   useEffect(function storeUser() {
     async function fetchUser() {
@@ -41,18 +40,30 @@ function App() {
     fetchUser();
   }, [token])
 
-  /** Takes object like {username, password} */
-
+  /** Login user: 
+   *  Takes object like {username, password} 
+   */
   async function login({username, password}) {
     let token = await JoblyApi.login(username, password);
     setToken(token);
   }
 
-  /** user object like 
-   *       {username, password, first_name, last_name, email} */
+  /** Register user: 
+   *  user object like 
+   *    {username, password, first_name, last_name, email} 
+   */
   async function register(user) {
     let token = await JoblyApi.register(user);
     setToken(token);
+  }
+
+  /** Update user:
+   *  user object like
+   *    { username, firstName, lastName, email}
+   */
+  async function update(username, formData) {
+    let user = await JoblyApi.updateUser(username, formData);
+    setCurrentUser(user);
   }
 
   /** Log user out. */
@@ -67,10 +78,9 @@ function App() {
     <BrowserRouter>
       <UserContext.Provider value={currentUser}>
         <Navbar logout={logout} />
-        <Routes login={login} register={register} />
+        <Routes login={login} register={register} update={update} />
       </UserContext.Provider>
     </BrowserRouter>
-    
   );
 }
 

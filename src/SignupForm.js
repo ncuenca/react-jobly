@@ -11,6 +11,7 @@ import './SignupForm.css';
  * 
  *  State:
  *      - formData
+ *      - errors
  * 
  *  Context:
  *      - currentUser {username, firstName, lastName, email}
@@ -23,6 +24,10 @@ export default function SignupForm({ register }) {
     const history = useHistory();
     const [formData, setFormData] = useState({});
     const [errors, setErrors] = useState([]);
+
+    if(currentUser) {
+        return <Redirect to="/" />
+    }
 
     function handleChange(evt) { 
         const { name, value } = evt.target;
@@ -41,10 +46,6 @@ export default function SignupForm({ register }) {
             setErrors(errs);
         }
         
-    }
-
-    if(currentUser) {
-        return <Redirect to="/" />
     }
 
     return (

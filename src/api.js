@@ -55,6 +55,15 @@ class JoblyApi {
     return res.user;
   }
 
+  /** Update user profile.
+   * 
+   *  formData like: { firstName, lastName, email, password}
+   */
+  static async updateUser(username, formData) {
+    let res = await this.request(`users/${username}`, formData, "patch");
+    return res.user
+  }
+
   /** Get details on a company by handle. */
 
   static async getCompany(handle) {

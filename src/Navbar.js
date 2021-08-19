@@ -18,10 +18,10 @@ export default function Navbar({ logout }) {
     return (
         <nav className="Navbar navbar navbar-dark bg-primary d-flex bd-highlight mb-4">
           <div className="me-auto pl-0 bd-highlight navbar-brand"><NavLink exact to='/'>Jobly</NavLink></div>
-          <div className="p-0 bd-highlight"><NavLink exact to='/companies'>COMPANIES</NavLink></div>
-          <div className="p-0 bd-highlight"><NavLink exact to='/jobs'>JOBS</NavLink></div>
-          <div className="p-0 bd-highlight"><NavLink exact to='/profile'>PROFILE</NavLink></div>
-          <div className="pr-5 bd-highlight"><NavLink exact to='/logout'onClick={logout}>Logout</NavLink></div>
+          <div className="bd-highlight"><NavLink exact to='/companies'>COMPANIES</NavLink></div>
+          <div className="bd-highlight"><NavLink exact to='/jobs'>JOBS</NavLink></div>
+          <div className="bd-highlight"><NavLink exact to='/profile'>PROFILE</NavLink></div>
+          <div className="bd-highlight"><NavLink exact to='/logout'onClick={logout}>Logout</NavLink></div>
         </nav>
       );
   } 
