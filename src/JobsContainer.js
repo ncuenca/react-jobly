@@ -20,6 +20,9 @@ import Loading from "./Loading";
  *      - jobs
  *      - searchTerm
  * 
+ *  Context:
+ *      - UserContext
+ * 
  * JobsContainer -> { JobList, SearchBar }
  */
 

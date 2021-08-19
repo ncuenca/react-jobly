@@ -36,7 +36,7 @@ export default function CompanyDetails() {
     <div className="CompanyDetails container">
       <div className="CompanyDetails-info mb-4">
         <h4>{company.name}</h4>
-        <h5>{company.description}</h5>
+        <small>{company.description}</small>
       </div>
 
       <JobList jobs={company.jobs} />

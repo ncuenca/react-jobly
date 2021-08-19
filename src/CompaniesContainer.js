@@ -18,7 +18,10 @@ import Loading from "./Loading";
  *      - isLoading
  *      - companies
  * 
- * CompaniesContainer -> { CompanyList, SearchBar }
+ *  Context:
+ *      - UserContext
+ * 
+ *  CompaniesContainer -> { CompanyList, SearchBar }
  */
 export default function CompaniesContainer() {
     const currentUser = useContext(UserContext);

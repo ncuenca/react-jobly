@@ -8,6 +8,9 @@ import UserContext from "./userContext";
  *  If a user is logged in, shows a welcome message.
  *  If not, shows option to login or register.
  *
+ *  Context:
+ *      - UserContext
+ * 
  *  Routes -> Homepage
  */
 export default function Homepage() {

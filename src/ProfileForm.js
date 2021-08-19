@@ -1,8 +1,10 @@
 import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import UserContext from "./userContext";
+import './ProfileForm.css'
 
 /** Renders a form to edit user profile. 
+ *  Inaccessible if not logged in.
  *  
  *  Props:
  *      - update
@@ -12,10 +14,9 @@ import UserContext from "./userContext";
  *      - success 
  *      - errors
  * 
- *  Inaccessible if not logged in.
- * 
  *  Context: 
- *      - currentUser
+ *      - UserContext
+ * 
  *  Routes -> ProfileForm
  */
 export default function ProfileForm({ update }) {
@@ -40,7 +41,7 @@ export default function ProfileForm({ update }) {
       [name]: value,
     }));
   }
-// sdgaew
+
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
@@ -52,7 +53,7 @@ export default function ProfileForm({ update }) {
   }
 
   return (
-    <div className="Profile container mb-4">
+    <div className="ProfileForm container mb-4">
       {errors.length > 0 &&
         errors.map((error) => (
           <div key={error} className="alert alert-danger">

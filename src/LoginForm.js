@@ -12,9 +12,10 @@ import './LoginForm.css'
  * 
  *  State:
  *      - formData
+ *      - errors
  *  
  *  Context:
- *      - currentUser
+ *      - UserContext
  * 
  * App -> Routes -> LoginForm
  */

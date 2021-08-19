@@ -15,6 +15,9 @@ import UserContext from "./userContext.js";
  *    { Homepage, CompaniesContainer, JobsContainer, CompanyDetails, ProfileForm} and logout
  *  
  *  Not logged in -> { Homepage, SignupForm, Login }
+ * 
+ *  Context:
+ *      - UserContext
  *
  *  App -> Routes
  */

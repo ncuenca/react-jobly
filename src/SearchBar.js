@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 /** SearchBar Component
  *
+ * Props:
+ *    - search (parent callback)
+ * 
  *  State:
  *    - term
- *
- *  Props:
- *    - search (parent callback)
  * 
  * { CompaniesContainer, JobsContainer } -> SearchBar
  */

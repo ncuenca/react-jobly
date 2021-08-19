@@ -14,7 +14,7 @@ import './SignupForm.css';
  *      - errors
  * 
  *  Context:
- *      - currentUser {username, firstName, lastName, email}
+ *      - UserContext
  * 
  *  App -> Routes -> SignupForm
  */

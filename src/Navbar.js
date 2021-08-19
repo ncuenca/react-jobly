@@ -8,6 +8,12 @@ import React, { useContext } from "react";
  *
  *  If a user is logged in, shows Companies, Jobs, Profile, and Logout links.
  *  If not, shows option to login or register.
+ * 
+ *  Props:
+ *      - logout
+ * 
+ *  Context:
+ *      - UserContext
  *  
  *  App -> Navbar
  */

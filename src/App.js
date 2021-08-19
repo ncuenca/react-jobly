@@ -16,6 +16,8 @@ import UserContext from './userContext';
  *  States:
  *    - token
  *    - currentUser
+ *  Context:
+ *    - creates UserContext
  * 
  *  App -> { Navbar, Routes }
  */
