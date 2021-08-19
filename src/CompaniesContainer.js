@@ -38,15 +38,15 @@ export default function CompaniesContainer() {
     }
 
     if (!currentUser) {
-        return <Redirect to="/" />
+        return <Redirect to="/" />;
     } 
     
-    if (isLoading) return <p>Loading...</p>
+    if (isLoading) return <p>Loading...</p>;
 
     return (
         <div className="CompaniesContainer container">
             <SearchBar search={search} initialTerm={searchTerm} />
             <CompanyList companies={companies}/>
         </div>
-    )
+    );
 }

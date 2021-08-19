@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 import UserContext from "./userContext";
+import './SignupForm.css';
 
 /** Renders a Signup Form to create a new user
  *  
@@ -11,14 +12,17 @@ import UserContext from "./userContext";
  *  State:
  *      - formData
  * 
+ *  Context:
+ *      - currentUser {username, firstName, lastName, email}
+ * 
  *  App -> Routes -> SignupForm
  */
 export default function SignupForm({ register }) {
     const currentUser = useContext(UserContext);
-    console.log(currentUser)
     
     const history = useHistory();
     const [formData, setFormData] = useState({});
+    //TODO: ERRORS STATE
 
     function handleChange(evt) { 
         const { name, value } = evt.target;
@@ -30,6 +34,7 @@ export default function SignupForm({ register }) {
     
     async function handleSubmit(evt) { 
         evt.preventDefault();
+        // TODO: MOVE TRY CATCH
         if (await register(formData)) {
             history.push('/companies')
         } 
@@ -40,9 +45,9 @@ export default function SignupForm({ register }) {
     }
 
     return (
-        <div className="container">
-            <h1>Sign up</h1>
+        <div className="SignupForm container">
             <form onSubmit={handleSubmit} style={{width: "60%"}}>
+                <h1>Sign up</h1>
                 <div className="form-group">
                     <label htmlFor="username">Username: </label>
                     <input
@@ -50,7 +55,7 @@ export default function SignupForm({ register }) {
                         name="username"
                         className="form-control"
                         onChange={handleChange}
-                        value={formData.username}
+                        value={formData.username || ""}
                         aria-label="Username"
                     />
                 </div>
@@ -62,7 +67,7 @@ export default function SignupForm({ register }) {
                         type="password"
                         className="form-control"
                         onChange={handleChange}
-                        value={formData.password}
+                        value={formData.password || ""}
                         aria-label="Password"
                     />
                 </div>
@@ -73,7 +78,7 @@ export default function SignupForm({ register }) {
                         name="firstName"
                         className="form-control"
                         onChange={handleChange}
-                        value={formData.firstName}
+                        value={formData.firstName || ""}
                         aria-label="first-name"
                     />
                 </div>
@@ -84,7 +89,7 @@ export default function SignupForm({ register }) {
                         name="lastName"
                         className="form-control"
                         onChange={handleChange}
-                        value={formData.lastName}
+                        value={formData.lastName || ""}
                         aria-label="last-name"
                     />
                 </div>
@@ -96,7 +101,7 @@ export default function SignupForm({ register }) {
                         type="email"
                         className="form-control"
                         onChange={handleChange}
-                        value={formData.email}
+                        value={formData.email || ""}
                         aria-label="email"
                     />
                 </div>

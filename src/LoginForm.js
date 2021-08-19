@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import './LoginForm.css'
 
 
 /** Renders a Login Form to login a user
@@ -16,6 +17,7 @@ import { useHistory } from "react-router-dom";
 export default function LoginForm({ login }) {
     const history = useHistory();
     const [formData, setFormData] = useState({});
+    // TODO: ERRORS STATE
 
     function handleChange(evt) { 
         const { name, value } = evt.target;
@@ -28,15 +30,16 @@ export default function LoginForm({ login }) {
     async function handleSubmit(evt) { 
         
         evt.preventDefault();
+        // TODO: MOVE TRY CATCH HERE
         if (await login(formData)) {
-            history.push('/companies')
+            history.push('/companies');
         } 
     }
 
     return (
         <div className="LoginForm container">
-            <h1>Log In</h1>
             <form onSubmit={handleSubmit} style={{width: "60%"}}>
+                <h1>Log In</h1>
                 <div className="form-group">
                     <label htmlFor="login-user">Username: </label>
                     <input
@@ -44,7 +47,7 @@ export default function LoginForm({ login }) {
                         name="username"
                         className="form-control"
                         onChange={handleChange}
-                        value={formData.username}
+                        value={formData.username || ""}
                         aria-label="Username"
                     />
                 </div>
@@ -56,7 +59,7 @@ export default function LoginForm({ login }) {
                         type="password"
                         className="form-control"
                         onChange={handleChange}
-                        value={formData.password}
+                        value={formData.password || ""}
                         aria-label="Password"
                     />
                 </div>

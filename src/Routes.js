@@ -12,7 +12,7 @@ import LoginForm from "./LoginForm";
  *
  *  App -> Routes
  */
-
+//TODO: route protection 
 export default function Routes({ login, register }) {
   return (
     <div className="Routes">

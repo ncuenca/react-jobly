@@ -11,25 +11,26 @@ import React, { useContext } from "react";
  *  
  *  App -> Navbar
  */
-export default function Navbar() {
+export default function Navbar({ logout }) {
   const currentUser = useContext(UserContext);
 
   if (currentUser) {
     return (
-        <nav className="NavBar navbar navbar-light bg-light mb-4">
-          <NavLink exact to='/'>Jobly</NavLink>
-          <NavLink exact to='/companies'>Companies</NavLink>
-          <NavLink exact to='/jobs'>Jobs</NavLink>
-          <NavLink exact to='/profile'>Profile</NavLink>
+        <nav className="Navbar navbar navbar-dark bg-primary d-flex bd-highlight mb-4">
+          <div class="me-auto pl-0 bd-highlight navbar-brand"><NavLink exact to='/'>Jobly</NavLink></div>
+          <div class="p-0 bd-highlight"><NavLink exact to='/companies'>COMPANIES</NavLink></div>
+          <div class="p-0 bd-highlight"><NavLink exact to='/jobs'>JOBS</NavLink></div>
+          <div class="p-0 bd-highlight"><NavLink exact to='/profile'>PROFILE</NavLink></div>
+          <div class="pr-5 bd-highlight"><NavLink exact to='/'onClick={logout}>Logout</NavLink></div>
         </nav>
       );
   } 
   
   return (
-    <nav className="NavBar navbar navbar-light bg-light mb-4">
-      <NavLink exact to='/'>Jobly</NavLink>
-      <NavLink exact to='/signup'>Signup</NavLink>
-      <NavLink exact to='/login'>Login</NavLink>
-    </nav>
+        <nav className="Navbar navbar navbar-dark bg-primary d-flex bd-highlight mb-4">
+          <div class="me-auto pl-0 bd-highlight navbar-brand"><NavLink exact to='/'>Jobly</NavLink></div>
+          <div class="p-0 bd-highlight"><NavLink exact to='/signup'>Signup</NavLink></div>
+          <div class="p-0 bd-highlight"><NavLink exact to='/login'>Login</NavLink></div>
+        </nav>
     )   
 }
