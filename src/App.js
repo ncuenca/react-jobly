@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
 import JoblyApi from './api';
 import jwt from "jsonwebtoken";
 import UserContext from './userContext';
+import Loading from './Loading';
 
 /** Jobly App.
  * 
@@ -16,6 +17,8 @@ import UserContext from './userContext';
  *  States:
  *    - token
  *    - currentUser
+ *    - infoLoaded
+ * 
  *  Context:
  *    - creates UserContext
  * 
@@ -24,7 +27,7 @@ import UserContext from './userContext';
 function App() {
   const [token, setToken] = useState(localStorage.token);
   const [currentUser, setCurrentUser] = useState(null);
-  // TODO: isLoggingIn state
+  const [infoLoaded, setInfoLoaded] = useState(false);
 
   useEffect(function storeUser() {
     async function fetchUser() {
@@ -33,20 +36,22 @@ function App() {
         // store token from login/register process to JoblyApi class
         JoblyApi.token = token;
         localStorage.token = token;
-  
+
         let { username } = jwt.decode(token);
         let user = await JoblyApi.getUser(username);
-        
+
         setCurrentUser(user);
       }
+      setInfoLoaded(true);
     }
+    setInfoLoaded(false);
     fetchUser();
   }, [token])
 
   /** Login user: 
    *  Takes object like {username, password} 
    */
-  async function login({username, password}) {
+  async function login({ username, password }) {
     let token = await JoblyApi.login(username, password);
     setToken(token);
   }
@@ -76,6 +81,8 @@ function App() {
     setCurrentUser(null);
     localStorage.clear();
   }
+
+  if (!infoLoaded) return <Loading />;
 
   return (
     <BrowserRouter>
