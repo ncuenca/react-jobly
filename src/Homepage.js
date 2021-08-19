@@ -22,7 +22,7 @@ export default function Homepage() {
 
   return (
     <div className="Homepage">
-      <div className="container">
+      <div className="Homepage-msg container">
         <h1>Jobly</h1>
         <p>All the jobs in one, convenient place.</p>
         <h2>Welcome Back, {currentUser.firstName}</h2>

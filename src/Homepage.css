@@ -1,3 +1,12 @@
 .Homepage {
+    position: relative;
     text-align: center;
+    height: 100%;
+}
+  
+.Homepage-msg {
+    position: absolute;
+    margin-top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

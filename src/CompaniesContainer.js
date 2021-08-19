@@ -5,6 +5,7 @@ import SearchBar from "./SearchBar";
 import CompanyList from './CompanyList';
 import './CompaniesContainer.css';
 import UserContext from "./userContext";
+import Loading from "./Loading";
 
 /** CompaniesContainer renders CompanyList and SearchBar.
  * 
@@ -41,7 +42,7 @@ export default function CompaniesContainer() {
         return <Redirect to="/" />;
     } 
     
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading) return <Loading />;
 
     return (
         <div className="CompaniesContainer container">

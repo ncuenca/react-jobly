@@ -5,6 +5,7 @@ import SearchBar from "./SearchBar";
 import JobList from './JobList';
 import './JobsContainer.css'
 import UserContext from "./userContext";
+import Loading from "./Loading";
 
 
 /** JobsContainer renders JobList and SearchBar.
@@ -44,7 +45,7 @@ export default function JobsContainer() {
         return <Redirect to="/" />
     } 
 
-    if (isLoading) return <p>Loading...</p>
+    if (isLoading) return <Loading />
 
     return (
         <div className="JobsContainer container">
