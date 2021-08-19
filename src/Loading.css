@@ -6,7 +6,7 @@
 .Loading-msg {
   position: absolute;
   font-size: 200%;
-  top: 50%;
+  margin-top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

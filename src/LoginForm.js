@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { useHistory, Redirect } from "react-router-dom";
+import UserContext from "./userContext";
 import './LoginForm.css'
 
 
@@ -11,13 +12,18 @@ import './LoginForm.css'
  * 
  *  State:
  *      - formData
+ *  
+ *  Context:
+ *      - currentUser
  * 
  * App -> Routes -> LoginForm
  */
 export default function LoginForm({ login }) {
+    const currentUser = useContext(UserContext);
+
     const history = useHistory();
     const [formData, setFormData] = useState({});
-    // TODO: ERRORS STATE
+    const [errors, setErrors] = useState([]);
 
     function handleChange(evt) { 
         const { name, value } = evt.target;
@@ -28,16 +34,26 @@ export default function LoginForm({ login }) {
     }
     
     async function handleSubmit(evt) { 
-        
         evt.preventDefault();
-        // TODO: MOVE TRY CATCH HERE
-        if (await login(formData)) {
+        try {
+            await login(formData);
             history.push('/companies');
-        } 
+        } catch (errs) {
+            setErrors([...errs]);
+        }
+    }
+
+    if(currentUser) {
+        return <Redirect to="/" />
     }
 
     return (
         <div className="LoginForm container">
+            {errors.length > 0 && errors.map(error=> (
+                <div key={error} className="alert alert-danger">
+                    <strong>{error}</strong>
+                </div>
+            ))}
             <form onSubmit={handleSubmit} style={{width: "60%"}}>
                 <h1>Log In</h1>
                 <div className="form-group">

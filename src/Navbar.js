@@ -17,20 +17,20 @@ export default function Navbar({ logout }) {
   if (currentUser) {
     return (
         <nav className="Navbar navbar navbar-dark bg-primary d-flex bd-highlight mb-4">
-          <div class="me-auto pl-0 bd-highlight navbar-brand"><NavLink exact to='/'>Jobly</NavLink></div>
-          <div class="p-0 bd-highlight"><NavLink exact to='/companies'>COMPANIES</NavLink></div>
-          <div class="p-0 bd-highlight"><NavLink exact to='/jobs'>JOBS</NavLink></div>
-          <div class="p-0 bd-highlight"><NavLink exact to='/profile'>PROFILE</NavLink></div>
-          <div class="pr-5 bd-highlight"><NavLink exact to='/'onClick={logout}>Logout</NavLink></div>
+          <div className="me-auto pl-0 bd-highlight navbar-brand"><NavLink exact to='/'>Jobly</NavLink></div>
+          <div className="p-0 bd-highlight"><NavLink exact to='/companies'>COMPANIES</NavLink></div>
+          <div className="p-0 bd-highlight"><NavLink exact to='/jobs'>JOBS</NavLink></div>
+          <div className="p-0 bd-highlight"><NavLink exact to='/profile'>PROFILE</NavLink></div>
+          <div className="pr-5 bd-highlight"><NavLink exact to='/logout'onClick={logout}>Logout</NavLink></div>
         </nav>
       );
   } 
   
   return (
         <nav className="Navbar navbar navbar-dark bg-primary d-flex bd-highlight mb-4">
-          <div class="me-auto pl-0 bd-highlight navbar-brand"><NavLink exact to='/'>Jobly</NavLink></div>
-          <div class="p-0 bd-highlight"><NavLink exact to='/signup'>Signup</NavLink></div>
-          <div class="p-0 bd-highlight"><NavLink exact to='/login'>Login</NavLink></div>
+          <div className="me-auto pl-0 bd-highlight navbar-brand"><NavLink exact to='/'>Jobly</NavLink></div>
+          <div className="me-0 bd-highlight"><NavLink exact to='/signup'>Signup</NavLink></div>
+          <div className="ps-0 me-2 bd-highlight"><NavLink exact to='/login'>Login</NavLink></div>
         </nav>
     )   
 }

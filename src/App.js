@@ -44,27 +44,15 @@ function App() {
   /** Takes object like {username, password} */
 
   async function login({username, password}) {
-    try {
-      let token = await JoblyApi.login(username, password);
-      setToken(token);
-      return true;
-    } catch (err) {
-      alert(err[0]);
-      return false;
-    }
+    let token = await JoblyApi.login(username, password);
+    setToken(token);
   }
 
   /** user object like 
    *       {username, password, first_name, last_name, email} */
   async function register(user) {
-    try {
-      let token = await JoblyApi.register(user);
-      setToken(token);
-      return true;
-    } catch (err) {
-      alert(err[0]);
-      return false;
-    }
+    let token = await JoblyApi.register(user);
+    setToken(token);
   }
 
   /** Log user out. */

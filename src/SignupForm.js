@@ -22,7 +22,7 @@ export default function SignupForm({ register }) {
     
     const history = useHistory();
     const [formData, setFormData] = useState({});
-    //TODO: ERRORS STATE
+    const [errors, setErrors] = useState([]);
 
     function handleChange(evt) { 
         const { name, value } = evt.target;
@@ -34,10 +34,13 @@ export default function SignupForm({ register }) {
     
     async function handleSubmit(evt) { 
         evt.preventDefault();
-        // TODO: MOVE TRY CATCH
-        if (await register(formData)) {
+        try {
+            await register(formData)
             history.push('/companies')
-        } 
+        } catch (errs) {
+            setErrors(errs);
+        }
+        
     }
 
     if(currentUser) {
@@ -46,6 +49,11 @@ export default function SignupForm({ register }) {
 
     return (
         <div className="SignupForm container">
+            {errors.length > 0 && errors.map(error=> (
+                <div key={error} className="alert alert-danger">
+                    <strong>{error}</strong>
+                </div>
+            ))}
             <form onSubmit={handleSubmit} style={{width: "60%"}}>
                 <h1>Sign up</h1>
                 <div className="form-group">

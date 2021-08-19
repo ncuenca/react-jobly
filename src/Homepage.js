@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import "./Homepage.css";
 import UserContext from "./userContext";
 
@@ -15,7 +16,12 @@ export default function Homepage() {
   if (!currentUser) {
     return (
       <div className="Homepage container">
-        <p>You're not logged in.</p>
+        <div className="Homepage-msg container">
+          <h1>Jobly</h1>
+          <p>All the jobs in one, convenient place.</p>
+          <Link to="/signup"><button className="btn btn-primary me-2">Sign Up</button></Link>
+          <Link to="/login"><button className="btn btn-primary">Login</button></Link>
+        </div>
       </div>
     );
   }

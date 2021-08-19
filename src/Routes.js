@@ -38,6 +38,9 @@ export default function Routes({ login, register }) {
         <Route exact path="/login">
           <LoginForm login={login}/>
         </Route>
+        <Route exact path="/logout">
+          <Redirect to='/'/>
+        </Route>
         <Redirect to="/"/>
       </Switch>
     </div>
