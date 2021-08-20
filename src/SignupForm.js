@@ -48,7 +48,7 @@ export default function SignupForm({ register }) {
   }
 
   return (
-    <div className="SignupForm">
+    <div className="SignupForm pt-2">
       <form
         onSubmit={handleSubmit}
         className="SignupForm-form container"

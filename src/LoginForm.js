@@ -53,7 +53,7 @@ export default function LoginForm({ login }) {
   }
 
   return (
-    <div className="LoginForm">
+    <div className="LoginForm pt-2">
       <form
         onSubmit={handleSubmit}
         className="LoginForm-form container"

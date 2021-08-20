@@ -22,15 +22,13 @@ export default function SearchBar({ search, initialTerm }) {
     });
   }
 
-  // trim term before passing to search
-  // function handleSubmit(evt) {
-  //   evt.preventDefault();
-  //   search(term.trim());
-  // }
+  function handleSubmit(evt) {
+    evt.preventDefault();
+  }
 
   return (
-    <form style={{width: "60%"}}>
-      <div className="input-group mb-3">
+    <form onSubmit={handleSubmit} style={{width: "60%"}}>
+      <div className="input-group mb-3 mt-3">
         <input 
           type="text"
           value={term} 

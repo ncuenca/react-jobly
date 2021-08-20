@@ -55,7 +55,7 @@ export default function ProfileForm({ update }) {
   }
 
   return (
-    <div className="ProfileForm container">
+    <div className="ProfileForm container mt-2">
       <form onSubmit={handleSubmit} style={{ width: "60%" }}>
         {errors.length > 0 &&
           errors.map((error) => (

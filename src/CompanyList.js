@@ -17,12 +17,12 @@ const PER_PAGE = 10;
 
 export default function CompanyList({ companies }) {
   const [currentPage, setCurrentPage] = useState(0);
-  const [data, setData] = useState(companies);
+
   
   const offset = currentPage * PER_PAGE;
-  const pageCount = Math.ceil(data.length / PER_PAGE);
+  const pageCount = Math.ceil(companies.length / PER_PAGE);
   
-  const currentPageCompanies = data.slice(offset, offset + PER_PAGE);
+  const currentPageCompanies = companies.slice(offset, offset + PER_PAGE);
   
   console.log("Companies", currentPageCompanies, offset, pageCount);
 
@@ -45,7 +45,7 @@ export default function CompanyList({ companies }) {
         marginPagesDisplayed={2}
         pageRangeDisplayed={10}
         onPageChange={handlePageClick}
-        containerClassName={"pagination pagination-lg"}
+        containerClassName={"pagination pagination-md"}
         activeClassName={"page-item active"}
         activeLinkClassName={"page-link"}
         disabledClassName={"page-item disabled"}

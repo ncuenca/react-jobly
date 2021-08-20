@@ -15,12 +15,11 @@ const PER_PAGE = 10;
 
 export default function JobList({ jobs }) {
   const [currentPage, setCurrentPage] = useState(0);
-  const [data, setData] = useState(jobs);
 
   const offset = currentPage * PER_PAGE;
-  const pageCount = Math.ceil(data.length / PER_PAGE);
+  const pageCount = Math.ceil(jobs.length / PER_PAGE);
 
-  const currentPageJobs = data.slice(offset, offset + PER_PAGE);
+  const currentPageJobs = jobs.slice(offset, offset + PER_PAGE);
 
   console.log("Jobs", currentPageJobs, offset, pageCount);
 
@@ -44,7 +43,7 @@ export default function JobList({ jobs }) {
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
         onPageChange={handlePageClick}
-        containerClassName={"pagination pagination-lg"}
+        containerClassName={"pagination pagination-md"}
         activeClassName={"page-item active"}
         activeLinkClassName={"page-link"}
         disabledClassName={"page-item disabled"}
