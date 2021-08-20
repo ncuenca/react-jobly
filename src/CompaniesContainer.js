@@ -6,7 +6,11 @@ import CompanyList from "./CompanyList";
 import "./CompaniesContainer.css";
 import UserContext from "./userContext";
 import Loading from "./Loading";
+<<<<<<< HEAD
 import debounce from "lodash.debounce";
+=======
+import debounce from 'lodash.debounce';
+>>>>>>> 5cd6ea6d5a913168787cdd3533837da7b750591e
 
 /** CompaniesContainer renders CompanyList and SearchBar.
  *
@@ -25,6 +29,7 @@ import debounce from "lodash.debounce";
  *  CompaniesContainer -> { CompanyList, SearchBar }
  */
 export default function CompaniesContainer() {
+<<<<<<< HEAD
   const currentUser = useContext(UserContext);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -61,3 +66,37 @@ export default function CompaniesContainer() {
     </div>
   );
 }
+=======
+    const currentUser = useContext(UserContext);
+
+    const [isLoading, setIsLoading] = useState(true);
+    const [companies, setCompanies] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
+
+    useEffect(function getCompanies() {
+        search(searchTerm);
+    }, [searchTerm]);
+
+    async function search(term) {
+        setSearchTerm(term);
+        const companies = await JoblyApi.getCompanies(term);
+        setCompanies(companies);
+        setIsLoading(false);
+    }
+
+    const debouncedSearch = debounce(search, 500);
+
+    if (!currentUser) {
+        return <Redirect to="/" />;
+    } 
+    
+    if (isLoading) return <Loading />;
+
+    return (
+        <div className="CompaniesContainer container">
+            <SearchBar search={debouncedSearch} initialTerm={searchTerm} />
+            <CompanyList companies={companies}/>
+        </div>
+    );
+}
+>>>>>>> 5cd6ea6d5a913168787cdd3533837da7b750591e

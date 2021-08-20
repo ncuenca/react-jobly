@@ -6,6 +6,7 @@ import JobList from './JobList';
 import './JobsContainer.css'
 import UserContext from "./userContext";
 import Loading from "./Loading";
+import debounce from 'lodash.debounce';
 
 
 /** JobsContainer renders JobList and SearchBar.
@@ -44,6 +45,8 @@ export default function JobsContainer() {
         setIsLoading(false);
     }
 
+    const debouncedSearch = debounce(search, 500);
+
     if (!currentUser) {
         return <Redirect to="/" />
     } 
@@ -52,7 +55,7 @@ export default function JobsContainer() {
 
     return (
         <div className="JobsContainer container">
-            <SearchBar search={search} initialTerm={searchTerm} />
+            <SearchBar search={debouncedSearch} initialTerm={searchTerm} />
             <JobList jobs={jobs}/>         
         </div>
     )
