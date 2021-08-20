@@ -7,7 +7,6 @@ import "./CompaniesContainer.css";
 import UserContext from "./userContext";
 import Loading from "./Loading";
 import debounce from "lodash.debounce";
-import ReactPaginate from "react-paginate";
 
 /** CompaniesContainer renders CompanyList and SearchBar.
  *

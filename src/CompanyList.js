@@ -1,6 +1,6 @@
 import CompanyCard from "./CompanyCard";
 import ReactPaginate from "react-paginate";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./CompanyList.css"
 
 
@@ -20,7 +20,6 @@ export default function CompanyList({ companies }) {
   const [data, setData] = useState(companies);
   
   const offset = currentPage * PER_PAGE;
-  console.log(offset)
   const pageCount = Math.ceil(data.length / PER_PAGE);
   
   const currentPageCompanies = data.slice(offset, offset + PER_PAGE);

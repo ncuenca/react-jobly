@@ -22,12 +22,12 @@ export default function Navbar({ logout }) {
 
   if (currentUser) {
     return (
-        <nav className="Navbar navbar navbar-dark bg-primary d-flex bd-highlight mb-4">
+        <nav className="Navbar navbar navbar-dark bg-primary d-flex bd-highlight sticky-top mb-4">
           <div className="me-auto pl-0 bd-highlight navbar-brand"><NavLink exact to='/'>Jobly</NavLink></div>
           <div className="bd-highlight"><NavLink exact to='/companies'>COMPANIES</NavLink></div>
           <div className="bd-highlight"><NavLink exact to='/jobs'>JOBS</NavLink></div>
           <div className="bd-highlight"><NavLink exact to='/profile'>PROFILE</NavLink></div>
-          <div className="bd-highlight"><NavLink exact to='/logout'onClick={logout}>Logout</NavLink></div>
+          <div className="me-3 bd-highlight"><NavLink exact to='/logout'onClick={logout}>LOGOUT</NavLink></div>
         </nav>
       );
   } 

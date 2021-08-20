@@ -42,7 +42,7 @@ export default function JobList({ jobs }) {
         breakLinkClassName={"page-link"}
         pageCount={pageCount}
         marginPagesDisplayed={2}
-        pageRangeDisplayed={10}
+        pageRangeDisplayed={5}
         onPageChange={handlePageClick}
         containerClassName={"pagination pagination-lg"}
         activeClassName={"page-item active"}
