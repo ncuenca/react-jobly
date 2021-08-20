@@ -33,9 +33,10 @@ export default function JobsContainer() {
     const [isLoading, setIsLoading] = useState(true);
     const [jobs, setJobs] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const [filter, setFilter] = useState('All');
 
     useEffect(function getJobs() {
-        search(searchTerm);
+        search(searchTerm.trim());
     }, [searchTerm]);
 
     async function search(term) {
@@ -45,7 +46,23 @@ export default function JobsContainer() {
         setIsLoading(false);
     }
 
+    // async function searchApplied(term) {
+    //     setSearchTerm(term);
+    //     const jobs = await JoblyApi.getJobs(term);
+    //     setJobs(jobs.filter(job => currentUser.applications.includes(job.id)));
+    //     setIsLoading(false);
+    // }
+
+    // async function searchUnapplied(term) {
+    //     setSearchTerm(term);
+    //     const jobs = await JoblyApi.getJobs(term);
+    //     setJobs(jobs.filter(job => !(currentUser.applications.includes(job.id))));
+    //     setIsLoading(false);
+    // }
+
     const debouncedSearch = debounce(search, 500);
+    // const debouncedSearchApplied = searchApplied;
+    // const debouncedSearchUnapplied = searchUnapplied;
 
     if (!currentUser) {
         return <Redirect to="/" />
@@ -53,10 +70,25 @@ export default function JobsContainer() {
 
     if (isLoading) return <Loading />
 
+    let jobsForDisplay = jobs;
+
+    if (filter === 'Applied') {
+        jobsForDisplay = jobs.filter(job => currentUser.applications.includes(job.id))
+    } else if (filter === 'Unapplied') {
+        jobsForDisplay = jobs.filter(job => !(currentUser.applications.includes(job.id)))
+    }
+
     return (
         <div className="JobsContainer container">
-            <SearchBar search={debouncedSearch} initialTerm={searchTerm} />
-            <JobList jobs={jobs}/>         
+            <SearchBar 
+                search={debouncedSearch} 
+                initialTerm={searchTerm} 
+                isJobs={true} 
+                // searchApplied={debouncedSearchApplied}
+                // searchUnapplied={debouncedSearchUnapplied}
+                filter={filter}
+                setFilter={setFilter}/>
+            <JobList jobs={jobsForDisplay}/>         
         </div>
     )
 }

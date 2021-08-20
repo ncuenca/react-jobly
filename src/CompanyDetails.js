@@ -33,7 +33,7 @@ export default function CompanyDetails() {
   if (isLoading) return <p>Loading...</p>;
 
   return (
-    <div className="CompanyDetails container">
+    <div className="CompanyDetails container mt-2">
       <div className="CompanyDetails-info mb-4">
         <h4>{company.name}</h4>
         <small>{company.description}</small>

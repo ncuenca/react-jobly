@@ -1,4 +1,6 @@
 import 'bootswatch/dist/litera/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.js';
+
 import './App.css';
 import Routes from './Routes';
 import { BrowserRouter } from 'react-router-dom';

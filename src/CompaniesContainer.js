@@ -52,7 +52,7 @@ export default function CompaniesContainer() {
 
     return (
         <div className="CompaniesContainer container">
-            <SearchBar search={debouncedSearch} initialTerm={searchTerm} />
+            <SearchBar search={debouncedSearch} initialTerm={searchTerm} isJobs={false} />
             <CompanyList companies={companies}/>
         </div>
     );

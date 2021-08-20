@@ -1,0 +1,7 @@
+.SearchBar .dropdown button {
+    border-radius: 0px;
+}
+
+.SearchBar .dropdown {
+    margin: auto;
+}
