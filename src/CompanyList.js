@@ -1,4 +1,8 @@
 import CompanyCard from "./CompanyCard";
+import ReactPaginate from "react-paginate";
+import React, { useEffect, useState } from "react";
+import "./CompanyList.css"
+
 
 /** Renders list of companies
  *
@@ -7,8 +11,52 @@ import CompanyCard from "./CompanyCard";
  *
  * CompaniesContainer -> CompanyList -> CompanyCard
  */
+
+// number of companies to display on each page
+const PER_PAGE = 10;
+
 export default function CompanyList({ companies }) {
-  return companies.map((company) => (
-    <CompanyCard key={company.handle} company={company} />
-  ));
+  const [currentPage, setCurrentPage] = useState(0);
+  const [data, setData] = useState(companies);
+  
+  const offset = currentPage * PER_PAGE;
+  console.log(offset)
+  const pageCount = Math.ceil(data.length / PER_PAGE);
+  
+  const currentPageCompanies = data.slice(offset, offset + PER_PAGE);
+  
+  console.log("Companies", currentPageCompanies, offset, pageCount);
+
+  function handlePageClick({ selected: selectedPage }) {
+    setCurrentPage(selectedPage);
+    window.scrollTo(0,0);
+  }
+
+  return (
+    <div className="CompanyList">
+      {currentPageCompanies.map(company => (
+        <CompanyCard key={company.handle} company={company} />
+      ))}
+      <ReactPaginate
+        previousLabel={"<"}
+        nextLabel={">"}
+        breakLabel={"..."}
+        breakClassName={"break-me"}
+        pageCount={pageCount}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={10}
+        onPageChange={handlePageClick}
+        containerClassName={"pagination pagination-lg"}
+        activeClassName={"page-item active"}
+        activeLinkClassName={"page-link"}
+        disabledClassName={"page-item disabled"}
+        previousClassName={"page-item"}
+        previousLinkClassName={"page-link"}
+        nextClassName={"page-item"}
+        nextLinkClassName={"page-link"}
+        pageClassName={"page-item"}
+        pageLinkClassName={"page-link"}
+      />
+    </div>
+  );
 }

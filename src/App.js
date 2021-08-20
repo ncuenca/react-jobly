@@ -46,7 +46,7 @@ function App() {
     }
     setInfoLoaded(false);
     fetchUser();
-  }, [token])
+  }, [token]);
 
   /** Login user: 
    *  Takes object like {username, password} 

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 /** SearchBar Component
  *
  * Props:
- *    - search (parent callback)
+ *    - search (parent callback) that allows for live search
  * 
  *  State:
  *    - term
@@ -15,6 +15,7 @@ export default function SearchBar({ search, initialTerm }) {
 
   function handleChange(evt) {
     setTerm(evt.target.value);
+    search(evt.target.value);
   }
 
   // trim term before passing to search
