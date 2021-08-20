@@ -41,6 +41,7 @@ export default function JobsContainer() {
     }, [searchTerm]);
 
     async function search(term) {
+        setPage(0);
         setSearchTerm(term);
         const jobs = await JoblyApi.getJobs(term);
         setJobs(jobs);
