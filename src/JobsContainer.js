@@ -34,6 +34,7 @@ export default function JobsContainer() {
     const [jobs, setJobs] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [filter, setFilter] = useState('All');
+    const [page, setPage] = useState(0);
 
     useEffect(function getJobs() {
         search(searchTerm.trim());
@@ -88,7 +89,7 @@ export default function JobsContainer() {
                 // searchUnapplied={debouncedSearchUnapplied}
                 filter={filter}
                 setFilter={setFilter}/>
-            <JobList jobs={jobsForDisplay}/>         
+            <JobList jobs={jobsForDisplay} page={page} setPage={setPage}/>         
         </div>
     )
 }
