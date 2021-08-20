@@ -101,10 +101,10 @@ class JoblyApi {
    * 
    */
   
-  // static async applyJob(username, jobId) {
-  //   let res = await this.request(`users/${username}/jobs/${jobId}`, "post");
-  //   return res;
-  // }
+  static async apply(username, jobId) {
+    let res = await this.request(`users/${username}/jobs/${jobId}`, {}, "post");
+    return res;
+  }
 
 }
 

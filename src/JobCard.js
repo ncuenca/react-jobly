@@ -1,4 +1,7 @@
 import './JobCard.css';
+import JoblyApi from './api.js';
+import UserContext from "./userContext";
+import React, { useContext, useState } from "react";
 
 /** Renders Job Card
  * 
@@ -7,9 +10,24 @@ import './JobCard.css';
  * Props:
  *  - job
  * 
+ * Context:
+ *  - UserContext
+ * 
  * JobList -> JobCard
  */
 export default function JobCard({ job }) {
+    const currentUser = useContext(UserContext);
+    const [applied, setApplied] = useState(currentUser.applications.includes(job.id));
+
+    async function apply() {
+        try {
+            await JoblyApi.apply(currentUser.username, job.id);
+            setApplied(true);
+        } catch (errs) {
+
+        }
+    }
+
     return (
         <div className="JobCard container mb-4"style={{width: "60%"}}>
             <div className="card">
@@ -18,6 +36,9 @@ export default function JobCard({ job }) {
                     <h6 className="card-subtitle mb-2 text-muted">{job.companyHandle}</h6>
                     <p className="card-text">Salary: {job.salary}</p>
                     <p className="card-text">Equity: {job.equity}</p>
+                    {(applied)
+                        ? <button className="btn btn-outline-primary" disabled={applied}>Applied</button>
+                        : <button className="btn btn-primary" onClick={apply}>Apply</button>}
                 </div>
             </div>
         </div>
