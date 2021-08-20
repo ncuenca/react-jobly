@@ -13,18 +13,23 @@ import React, { useState } from "react";
 export default function SearchBar({ search, initialTerm }) {
   const [term, setTerm] = useState(initialTerm);
 
+  // useEffect separates request from handleChange
+
   function handleChange(evt) {
-    setTerm(evt.target.value);
+    setTerm(() => {
+      search(evt.target.value.trim());
+      return evt.target.value;
+    });
   }
 
   // trim term before passing to search
-  function handleSubmit(evt) {
-    evt.preventDefault();
-    search(term.trim());
-  }
+  // function handleSubmit(evt) {
+  //   evt.preventDefault();
+  //   search(term.trim());
+  // }
 
   return (
-    <form onSubmit={handleSubmit} style={{width: "60%"}}>
+    <form style={{width: "60%"}}>
       <div className="input-group mb-3">
         <input 
           type="text"
@@ -34,7 +39,6 @@ export default function SearchBar({ search, initialTerm }) {
           aria-label="Search term" 
           onChange={handleChange}
           aria-describedby="button-addon2"/>
-        <button className="btn btn-primary" type="submit" id="button-addon2">Search</button>
       </div>
     </form>
   );

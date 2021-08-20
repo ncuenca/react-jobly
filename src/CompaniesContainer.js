@@ -6,6 +6,7 @@ import CompanyList from './CompanyList';
 import './CompaniesContainer.css';
 import UserContext from "./userContext";
 import Loading from "./Loading";
+import debounce from 'lodash.debounce';
 
 /** CompaniesContainer renders CompanyList and SearchBar.
  * 
@@ -41,6 +42,8 @@ export default function CompaniesContainer() {
         setIsLoading(false);
     }
 
+    const debouncedSearch = debounce(search, 500);
+
     if (!currentUser) {
         return <Redirect to="/" />;
     } 
@@ -49,7 +52,7 @@ export default function CompaniesContainer() {
 
     return (
         <div className="CompaniesContainer container">
-            <SearchBar search={search} initialTerm={searchTerm} />
+            <SearchBar search={debouncedSearch} initialTerm={searchTerm} />
             <CompanyList companies={companies}/>
         </div>
     );
