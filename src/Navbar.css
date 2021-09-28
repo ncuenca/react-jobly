@@ -27,3 +27,6 @@ nav a:hover {
 .Navbar .navbar-brand a.active {
   color: white;
 }
+.Navbar .navbar-brand a {
+  color: white;
+}
